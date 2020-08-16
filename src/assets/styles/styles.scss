@@ -1,0 +1,17 @@
+@import './fonts.scss';
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+body {
+    background: linear-gradient(34deg, rgba(61,38,38,1) 0%, rgba(186,168,168,1) 40%, rgba(188,168,168,1) 64%, rgba(235,156,156,1) 100%);
+    background-attachment: fixed;
+}
