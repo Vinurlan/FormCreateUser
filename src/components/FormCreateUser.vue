@@ -28,12 +28,10 @@ import Passport from './FromCreateUsers/Passport'
 
 export default {
     name: 'FormCreateUser',
-    components: {
-        pages: {Person, Adress, Passport}
-    },
     data() {
         return {
-            pages: [],
+            pages: {Person, Adress, Passport},
+            pagesName: [],
             indicators: [],
             currNumPage: 0,
             allInfo: null
@@ -41,23 +39,22 @@ export default {
     },
     computed: {
         currPage() {
-            return this.$options.components.pages[this.pages[this.currNumPage]]
+            return this.pages[this.pagesName[this.currNumPage]]
         },
         buttonPrev() {
             return this.currNumPage > 0
         },
         buttonNext() {
-            return this.currNumPage < this.pages.length - 1
+            return this.currNumPage < this.pagesName.length - 1
         }
     },
     methods: {
-        initPages() {
-            this.pages = Object.keys(this.$options.components.pages)
-                .filter(componentName => componentName !== this.$options.name)
+        initPagesName() {
+            this.pagesName = Object.keys(this.pages)
         },
         nextPage() {
             if (this.$refs.pageComponent.checkInvalidAll()) return
-            if (this.currNumPage >= this.pages.length - 1) return
+            if (this.currNumPage >= this.pagesName.length - 1) return
             this.currNumPage++
         },
         prevPage() {
@@ -104,7 +101,7 @@ export default {
         },
 
         initIndicators() {
-            for (let i = 0; i < this.pages.length; i++) {
+            for (let i = 0; i < this.pagesName.length; i++) {
                 this.indicators.push({
                     num: i
                 })
@@ -112,7 +109,7 @@ export default {
         },
     },
     mounted() {
-        this.initPages()
+        this.initPagesName()
         this.initAllInfo()
         this.initIndicators()
     }
