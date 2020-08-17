@@ -118,12 +118,15 @@ export default {
 
 <style lang="scss">
 $sizeInput: 12pt;
+@mixin flex($dir: row, $js: center, $ac: center) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $js;
+    align-items: $ac;
+}
 
 .form_create_user {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    @include flex(column, space-between);
     margin: auto;
     width: 800px;
     min-height: 740px;
@@ -131,11 +134,8 @@ $sizeInput: 12pt;
     background-color: #fff;
 
     &__pages form {
+        @include flex(column, center, flex-start);
         width: 300px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
     }
 
     &__pages label {
@@ -197,9 +197,8 @@ $sizeInput: 12pt;
     }
 
     &__buttons {
+        @include flex(row, space-between, center);
         width: 300px;
-        display: flex;
-        justify-content: space-between;
         margin-bottom: 40px;
     }
     

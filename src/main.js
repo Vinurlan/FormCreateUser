@@ -3,6 +3,7 @@ import Vuelidate from 'vuelidate'
 import App from './App.vue'
 import './assets/styles/styles.scss'
 
+Vue.config.devtools = true
 Vue.config.productionTip = false
 
 Vue.use(Vuelidate)
